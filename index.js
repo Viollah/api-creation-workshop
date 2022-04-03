@@ -1,4 +1,5 @@
 // add code in here to create an API with ExpressJS
+const garments = require('./garments.json');
 const express = require('express');
 const app = express();
 
@@ -14,6 +15,8 @@ const PORT = process.env.PORT || 4017;
 app.listen(PORT, function() {
 	console.log(`App started on port ${PORT}`)
 });
+
+
 app.get('/api/garments', function(req, res){
 	// note that this route just send JSON data to the browser
 	// there is no template
