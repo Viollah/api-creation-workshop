@@ -1,5 +1,5 @@
 {
-  "name": "api-creation-workshop",
+  "name": "c",
   "version": "1.0.0",
   "description": "In thie workshop we explore how to create an API using ExpressJS.",
   "main": "index.js",
@@ -10,5 +10,14 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.3"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Viollah/api-creation-workshop.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Viollah/api-creation-workshop/issues"
+  },
+  "homepage": "https://github.com/Viollah/api-creation-workshop#readme"
 }
