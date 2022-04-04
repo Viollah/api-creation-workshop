@@ -18,8 +18,6 @@ app.listen(PORT, function() {
 
 
 app.get('/api/garments', function(req, res){
-	// note that this route just send JSON data to the browser
-	// there is no template
 	res.json({garments});
 });
 
@@ -31,7 +29,7 @@ app.get('/api/garments', function(req, res){
 	const season = req.query.season;
 
 	const filteredGarments = garments.filter(garment => {
-		// if both gender & season was supplied
+		
 		if (gender != 'All' && season != 'All') {
 			return garment.gender === gender 
 				&& garment.season === season;
@@ -43,8 +41,6 @@ app.get('/api/garments', function(req, res){
 		return true;
 	});
 
-	// note that this route just send JSON data to the browser
-	// there is no template
 	res.json({ 
 		garments : filteredGarments
 	});
