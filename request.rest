@@ -1,0 +1,32 @@
+
+GET http://localhost:4017/api/garments
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiVmlvbGxhaCIsImlhdCI6MTY0OTY5NDc5MiwiZXhwIjoxNjQ5Njk1MDkyfQ.R_Hgz6XLLlo7RlWED2-nerEiuG4v1IER_HbA8mRnHsI
+
+
+###
+
+DELETE http://localhost:4000/api/logout
+Content-Type: application/json
+
+{
+    "token" :  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiVmlvbGxhaCIsImlhdCI6MTY0OTY5NDc5Mn0.3qhp_WPL-mYCvGcXAaEDSazXtXECqjMtCKguAPyC4Dk"
+
+}
+
+###
+
+POST http://localhost:4000/token
+Content-Type: application/json
+
+{
+    "token":  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiVmlvbGxhaCIsImlhdCI6MTY0OTY5NDc5Mn0.3qhp_WPL-mYCvGcXAaEDSazXtXECqjMtCKguAPyC4Dk"
+
+}
+
+###
+POST http://localhost:4000/api/login
+Content-Type : application/json
+
+{
+    "username" : "Viollah"
+}
