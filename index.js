@@ -129,7 +129,7 @@ const generateAccessToken = (user) => {
 	});
   }
 
-const PORT = process.env.PORT || 4017;
+const PORT = process.env.PORT || 4019;
 app.listen(PORT, function () {
 	console.log(`App started on port ${PORT}`)
 });
