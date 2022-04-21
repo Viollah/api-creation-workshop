@@ -34,14 +34,13 @@ app.get('/api/garments', authenticateToken, (req, res) => {
 		}
 		return true;
 	});
-	// note that this route just send JSON data to the browser
-	// there is no template
+	
 	res.json({ garments: filteredGarments });
 });
 app.get('/api/garments/price/:price', authenticateToken, (req, res) => {
 	const maxPrice = Number(req.params.price);
 	const filteredGarments = garments.filter( garment => {
-		// filter only if the maxPrice is bigger than maxPrice
+
 		if (maxPrice > 0) {
 			return garment.price <= maxPrice;
 		}
@@ -54,7 +53,7 @@ app.get('/api/garments/price/:price', authenticateToken, (req, res) => {
 });
 app.post('/api/garments', authenticateToken, (req, res) => {
 
-	// get the fields send in from req.body
+	
 	const {
 		description,
 		img,
@@ -63,9 +62,7 @@ app.post('/api/garments', authenticateToken, (req, res) => {
 		price
 	} = req.body;
 
-	// add some validation to see if all the fields are there.
-	// only 3 fields are made mandatory here
-	// you can change that
+	
 
 	if (!description || !img || !price) {
 		res.json({
@@ -115,7 +112,7 @@ const generateAccessToken = (user) => {
 
 	  res.json({accessToken: accessToken});
 	}
-	res.sendStatus(401);
+	// res.sendStatus(401);
   });
   
   function authenticateToken(req, res, next) {
@@ -129,7 +126,7 @@ const generateAccessToken = (user) => {
 	});
   }
 
-const PORT = process.env.PORT || 4019;
+const PORT = process.env.PORT || 4014;
 app.listen(PORT, function () {
 	console.log(`App started on port ${PORT}`)
 });
