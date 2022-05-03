@@ -16,6 +16,23 @@ const garments = require('./garments.json');
 const jwt = require('jsonwebtoken')
 app.use(express.json())
 
+//database connection
+const GarmentManager = require('./shop/garment-manager');
+const pg = require('pg');
+const Pool = pg.Pool;
+
+const connectionString =
+  process.env.DATABASE_URL ||
+  'postgresql://missy_tee:missy123@localhost:5432/missy_tee_app';
+const pool = new Pool({
+  connectionString,
+  ssl: {
+    rejectUnauthorized: false,
+  },
+});
+
+const garmentManager = GarmentManager(pool);
+
 // API routes to be added here
 
 app.get('/api/garments', authenticateToken, (req, res) => {
@@ -37,6 +54,22 @@ app.get('/api/garments', authenticateToken, (req, res) => {
 	
 	res.json({ garments: filteredGarments });
 });
+//
+app.get('/api/garments', async function(req, res){
+
+	const gender = req.query.gender;
+	const season = req.query.season;
+
+	const filteredGarments = await garmentManager.filter({
+		gender,
+		season
+	});
+
+	res.json({ 
+		garments : filteredGarments
+	});
+});
+
 app.get('/api/garments/price/:price', authenticateToken, (req, res) => {
 	const maxPrice = Number(req.params.price);
 	const filteredGarments = garments.filter( garment => {
@@ -103,6 +136,7 @@ const generateAccessToken = (user) => {
 	  expiresIn: '24h',
 	});
   };
+
   
   app.post('/auth', (req, res) => {
 	const username = req.query.username;
@@ -130,4 +164,3 @@ const PORT = process.env.PORT || 4014;
 app.listen(PORT, function () {
 	console.log(`App started on port ${PORT}`)
 });
-
